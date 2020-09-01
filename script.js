@@ -2,12 +2,16 @@ const videoElement =  document.getElementById('video');
 const btn = document.getElementById('button');
 
 async function getMediaStream(){
-    // Getting media source
-    const mediaStream = await navigator.mediaDevices.getDisplayMedia();
-    videoElement.srcObject = mediaStream;
-    // Play video on load
-    videoElement.onloadedmetadata = () => {
-        videoElement.play();
+    try {
+        // Getting media source
+        const mediaStream = await navigator.mediaDevices.getDisplayMedia();
+        videoElement.srcObject = mediaStream;
+        // Play video on load
+        videoElement.onloadedmetadata = () => {
+            videoElement.play();
+        }
+    } catch (error) {
+        alert('Error here',error);
     }
 }
 
